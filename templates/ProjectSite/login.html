@@ -7,29 +7,52 @@
 
 {% block body %}
     <section>
-            <div class="container px-5">
-                <div class="gx-5 align-items-center">
-                    <div class="col-lg-12 order-lg-1">
-                        <div class="p-5">
-                            <h2 class="display-4 text-center">Under Development</h2>
-                            <p class="text-center">Please Wait</p>
-                            <div class="d-flex justify-content-center form_container">
-                                <form method="post" action="">
-                                    {% csrf_token %}
-                                    <div class="input-group mb-3">
-                                        <input type="text" name="username" placeholder="Username..." class="form-control">
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <input type="password" name="password" placeholder="Password..." class="form-control">
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <input class="btn btn-dark" type="submit" value="Login">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+  <div class="content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center display-6  ">
+            <div class="col-md-12">
+              <div class="form-block">
+                  <div class="mb-4">
                 </div>
+
+              <span class="mb-0 text-muted">
+                {% if msg %}
+                    {{ msg | safe }}
+                {% else %}
+                    Login page
+                {% endif %}
+              </span>
+                <form  method="post">
+                    {% csrf_token %}
+                  <div class="form-group input-group-lg first">
+                    <label for="username">Username</label>
+                      {{ form.username }}
+                  </div>
+                  <div class="form-group input-group-lg last mb-4">
+                    <label for="username">Password</label>
+                    {{ form.password }}
+                  </div>
+                 {% comment %}
+                <div class="d-flex mb-5 align-items-center">
+                    <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+                      <input type="checkbox" checked="checked"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+                  </div>{% endcomment %}
+
+                  <input type="submit" value="Log In" class="btn btn-pill btn-lg text-white btn-block btn-primary">
+                </form>
+              </div>
             </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
     </section>
 {% endblock %}

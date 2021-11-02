@@ -1,5 +1,7 @@
+
+
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 
 class Event(models.Model):
@@ -9,3 +11,9 @@ class Event(models.Model):
 
     def __str__(self):
         return self
+
+
+class User(AbstractUser):
+    is_Paradym = models.BooleanField('Is Paradym', default=False)
+    is_ThirdParty = models.BooleanField('Is ThirdParty', default=False)
+    is_Admin = models.BooleanField('Is Admin', default=False)
